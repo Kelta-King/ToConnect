@@ -18,6 +18,7 @@ if(!isset($_SERVER['HTTPS'] ) )
 	}
 	
 ?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -122,4 +123,28 @@ if(!isset($_SERVER['HTTPS'] ) )
 			<div class="w3-section">
 				<input class="w3-input w3-round-xxlarge w3-border w3-hover-border-black" placeholder="again password" style="width:100%;" type="password" id="password2" required>
 			</div>
-	
+			
+			<div class="w3-section">
+				<select class="w3-select w3-round-xxlarge w3-border" id="gender" style="padding-left:5px" required>
+					<span class="w3-animate-top">
+					<option value="" class="w3-text-gray" disabled required>Select gender</option>
+					<option value="Male" class="w3-text-black" selected>Male</option>
+					<option value="Female" class="w3-text-black">Female</option>
+					<option value="Other" class="w3-text-black">Other</option>
+					</span>
+				</select>
+			</div>
+			<div class="w3-section">
+				<button type="button" class="kel-button w3-black w3-round w3-padding w3-border-black w3-black" onclick="SignUpCheck()">Free registeration</button>
+			</div>
+			</form>
+
+			</div>
+		</div>
+	  
+	  </div>
+	</div>
+	<script src="Js/check.js"></script>
+	<script src="Js/index.js"></script>
+	</body>
+</html>
