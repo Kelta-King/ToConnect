@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+
 if(isset($_SESSION['signup_login'])){
     
     $name = $_REQUEST['Name'];
@@ -12,7 +13,7 @@ if(isset($_SESSION['signup_login'])){
     
     $query = "SELECT u_name FROM users WHERE email = '$email'";
     
-     if($data = $conn->query($query)){
+    if($data = $conn->query($query)){
         
         if($data->num_rows > 0){
             
@@ -93,6 +94,13 @@ if(isset($_SESSION['signup_login'])){
             echo "This email address is already registered";
         }
         
+    }
+    else{
+        echo "Something went wrong";
+    }
+    
+    $conn->close();
+
 }
 else{
     echo "Signup first";
