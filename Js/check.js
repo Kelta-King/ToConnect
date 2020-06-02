@@ -4,26 +4,22 @@ class Check{
 			
 		if(Name == ""){
 			throw "Name is empty";
-			return false;
 		}
 		
 		if(Name.includes("$") || Name.includes("&") || Name.includes("=") || Name.includes("*") || Name.includes("`")){
-			return false;
+			return true;
 		}
 		
-    return true;
-}
+	}
 	
 	emailCheck(email, cont_msg) {
 		
 		if(email == ""){
 			throw "Name is empty";
-			return false;
 		}
 		
 		if(cont_msg == ""){
 			throw "data is empty";
-			return false;
 		}
 		
 		let s1 = email.split("@");
