@@ -85,3 +85,10 @@ body{
 .kel-heading:hover{
 	cursor:pointer;
 }
+.kel-click{
+    box-shadow: 0px 0px 8px 0 rgba(0, 0, 0, 0.5);
+    transition-duration:0.2s;
+}
+.kel-click:hover{
+    box-shadow: 0px 0px 4px 0 rgba(0, 0, 0, 0.4);
+}
