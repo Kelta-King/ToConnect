@@ -46,7 +46,6 @@ if(isset($_SESSION['signup_login'])){
     }
     else{
         echo "Something went wrong";
-        echo $query;
     }
     
     $conn->close();
