@@ -12,11 +12,10 @@ if(isset($_SESSION['signup_login'])){
     $query = "SELECT `u_id`, `u_password`, `u_name` FROM `users` WHERE email = '$email'";
 
     if($conn->query($query)){
-
+        //email check login
     }
     else{
         echo "Something went wrong";
-        echo $query;
     }
     
     $conn->close();
