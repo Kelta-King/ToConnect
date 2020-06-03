@@ -2,31 +2,31 @@ html {
   scroll-behavior: smooth;
   
 }
--webkit-body{
+body{
     font-family: 'Literata', serif;
 }
--webkit-#left1
+#left1
 {
 	transition-duration:0.4s;
 	transform:scale(1.1,1.1);
 }
--webkit-#right2
+#right2
 {
 	transition-duration:0.4s;
 	transform:scale(1.1,1.1);
 }
 	
--webkit-.kel-button{
+.kel-button{
 	border:2px solid white;
 	color:white;
 	transition-duration:0.2s;
 }
--webkit-.kel-button:hover{
+.kel-button:hover{
 	border:2px solid white;
 	transform:scale(1.08, 1.08);
 	cursor:pointer;
 }
--webkit-.kel-heading{
+.kel-heading{
 	margin-top:50px;
 	font-weight:800;
 	font-size:40px;
@@ -63,25 +63,25 @@ html {
 	100% { -webkit-transform: rotate(360deg); }
 }
 
-@-webkit-keyframes spin {
+@keyframes spin {
     0% { transform: rotate(0deg); }
 	100% { transform: rotate(360deg); }
 }
-#-webkit-left1
+#left1
 {
 	transition-duration:0.4s;
 	transform:scale(1.1,1.1);
 }
-#-webkit-right2
+#right2
 {
 	transition-duration:0.4s;
 	transform:scale(1.1,1.1);
 }
-.-webkit-k-webkit-el-heading{
+.kel-heading{
 	margin-top:50px;
 	font-weight:800;
 	font-size:40px;
 }
-.-webkit-kel-heading:hover{
+.kel-heading:hover{
 	cursor:pointer;
-}-webkit-
+}
