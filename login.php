@@ -4,6 +4,8 @@ session_start();
 
 if(isset($_SESSION['signup_login']) && isset($_SESSION['login_user_connect'])){
  
+    unset($_SESSION['signup_login']);
+    
     $url = base64_decode($_SESSION['login_user_connect']);
     
     $url = explode("&", $url);
