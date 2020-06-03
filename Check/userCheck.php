@@ -75,7 +75,8 @@ if(isset($_SESSION['signup_login'])){
                 $message = '<html><body>';
                 $message .= '<h1 style="color:black;">Hi '.$name.'!</h1>';
                 $message .= '<p style="color:green;font-size:19px;">Thanks for registration '.$name.'<br></p>';
-                $message .= '<p style="color:black;font-size:16px;">ToConnect has sent you a link to verify your email address.<br></p>';
+                $message .= '<p style="color:black;font-size:16px;">You account is successfully created and your temporary username is: <b>'.$u_name.'</b>'; 
+                $message .= '<br><br>You can chane it after your email verification and for that we have sent you the below link to verify your email address.<br></p>';
                 $message .= '<a style=\"font-size:16px;\" href="https://keltagoodlife.co/ToConnect/verify?vkey='.$vkey.'" >Click this link to verify your email</a>';
                 $message .= '<p style="color:black;font-size:16px;">This is a software generated email, so do not reply to this email</p>';
                 $message .= '<p style="color:black;font-size:16px;">Thank you<br><br>Regards,<br>Team ToConnect</p>';
