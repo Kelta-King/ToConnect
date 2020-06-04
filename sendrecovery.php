@@ -19,7 +19,7 @@ if(isset($_REQUEST['email'])){
     else{
         die("Something went wrong");
     }
-
+    
     $subject = "ToConnect: Account recovery";
     $headers  = 'MIME-Version: 1.0' . "\r\n";
     $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
@@ -36,8 +36,11 @@ if(isset($_REQUEST['email'])){
     $message .= '<p style="color:black;font-size:16px;">Thank you<br><br>Regards,<br>Team ToConnect</p>';
         
     $message .= '</body></html>';
+        
+    if(!mail($email,$subject,$message,$headers)){
+        die("Something went wrong");
+    }
     
-    mail($email,$subject,$message,$headers);
 }
 else{
     header("Location:../logout"); 
