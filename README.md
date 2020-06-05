@@ -21,8 +21,15 @@ ToCoonect Platform is a computerized system which helps the user to overcome the
   <li>APACHE HTTP Server</li>
 </ul>
 <ul>
-  <b>HARDWARE REQUIREMENTS </b>
+  <b>HARDWARE REQUIREMENTS :</b>
   <li>Network Connectivity</li>
+</ul>
+<ul>
+  <b>OBJECTIVE :</b>
+  <li>User Login and Sign-up</li>
+  <li>Interactive Chat Environment</li>
+  <li>Automated Bot</li>
+  <li>User history stored</li>
 </ul>
 <p align="center">
 <p align='center'>
@@ -30,3 +37,9 @@ ToCoonect Platform is a computerized system which helps the user to overcome the
 </p>
 <img src='https://github.com/Kelta-King/ToConnect/blob/master/blob/Home.JPG'>  
 </p>
+<p>
+Ther are 4 things a user can do. Start a new session, see all his sessions records, give feedback or raise a problem and can do account settings. User can change the theme of the website as well.
+</p>
+<p align='center'><b>If user clicks on New Session then a web page shows just like below</b></p>
+<img src='https://github.com/Kelta-King/ToConnect/blob/master/blob/startNew.JPG'>
+<img src=''>
