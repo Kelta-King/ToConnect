@@ -58,7 +58,8 @@ Ther are 4 things a user can do. Start a new session, see all his sessions recor
 <p>If you want to change the webpage's settings then click on the settings button or click on the button on the right top with your username written on it. A new popup settings modal comes in. You can change your password username and website's theme over there.</p>
 <p align="center"><b>Below is the settings panel of the site</b></p>
 <p align='center'>
-<a href="https://keltagoodlife.co/ToConnect/"><img src='https://github.com/Kelta-King/ToConnect/blob/master/blob/settings.JPG' height="400">
+<a href="https://keltagoodlife.co/ToConnect/">
+  <img src='https://github.com/Kelta-King/ToConnect/blob/master/blob/settings.gif'>
 </p></a>
 <p>
 I hope that you like my project. Thanks for reading.
