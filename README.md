@@ -48,7 +48,8 @@ Ther are 4 things a user can do. Start a new session, see all his sessions recor
 <a href="https://keltagoodlife.co/ToConnect/">
   <img src='https://github.com/Kelta-King/ToConnect/blob/master/blob/startNew.JPG'>
 </a>
-<p align='center'><b>Options of session's consellor. You can select one by clicking one. They will speak out their name.</b></p>
+<p align='center'>Before starting the session a user has to select the virtual consellor. There are two options. You can select one by clicking on. They will speak out their name. One is Dr Batla and the other one is Dr Karen</p>
+<p align="center"><b>Options of the consellors</b></p>
 <p align='center'>
 <a href="https://keltagoodlife.co/ToConnect/">
 <img src='https://github.com/Kelta-King/ToConnect/blob/master/blob/options.JPG' height="350">
