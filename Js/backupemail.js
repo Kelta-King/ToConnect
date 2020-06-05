@@ -1,4 +1,4 @@
-let send = () => {
+let send = (index) => {
     
     let pass = document.getElementById('pass').value;
     
@@ -18,7 +18,7 @@ let send = () => {
         return false;
     }
     
-    let str = "data=<?php echo $_REQUEST['data'] ?>"+"&pass="+pass;
+    let str = "data="+index+"&pass="+pass;
     let xhttp = new XMLHttpRequest();
     let loader = document.getElementById('loader');
     
