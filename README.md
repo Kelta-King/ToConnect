@@ -44,6 +44,11 @@ Ther are 4 things a user can do. Start a new session, see all his sessions recor
 <img src='https://github.com/Kelta-King/ToConnect/blob/master/blob/startNew.JPG'>
 <p align='center'><b>Options of session's consellor. You can select one by clicking one. They will speak out their name.</b></p>
 <p align='center'>
-<img src='https://github.com/Kelta-King/ToConnect/blob/master/blob/options.JPG'>
+<img src='https://github.com/Kelta-King/ToConnect/blob/master/blob/options.JPG' height="300">
 </p>
 <p>Allow your webpage's audio to talk with the virtual concellor via chat. Concellor will send messages as well as speak with you. You can turn off the audio if you don't like to listen the same thing which you are reading.</p>
+<p>If you want to change the webpage's settings then click on the settings button or click on the button on the right top with your username written on it. A new popup settings modal comes in. You can change your password username and website's theme over there.</p>
+<p align="center"><b>Below is the settings panel of the site</b></p>
+<p align='center'>
+<img src='https://github.com/Kelta-King/ToConnect/blob/master/blob/settings.JPG' height="350">
+</p>
