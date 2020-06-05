@@ -42,4 +42,8 @@ Ther are 4 things a user can do. Start a new session, see all his sessions recor
 </p>
 <p align='center'><b>If user clicks on New Session then a web page shows just like below</b></p>
 <img src='https://github.com/Kelta-King/ToConnect/blob/master/blob/startNew.JPG'>
-<img src=''>
+<p align='center'><b>Options of session's consellor. You can select one by clicking one. They will speak out their name.</b></p>
+<p align='center'>
+<img src='https://github.com/Kelta-King/ToConnect/blob/master/blob/options.JPG'>
+</p>
+<p>Allow your webpage's audio to talk with the virtual concellor via chat. Concellor will send messages as well as speak with you. You can turn off the audio if you don't like to listen the same thing which you are reading.</p>
