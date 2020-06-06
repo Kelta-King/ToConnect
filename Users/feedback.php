@@ -4,10 +4,10 @@ session_start();
 
 if(isset($_SESSION['login_user_connect']) && isset($_REQUEST['name'])){
     
-    $dtas = explode("&",base64_decode(($_REQUEST['name']));
-    $id_u = $dtas[3];
-    $email_u = $dtas[2];
-    $name_u = $dtas[1];
+    $dts = explode("&",base64_decode($_SESSION['login_user_connect']));
+    $id = $dts[0];
+    $email = $dts[1];
+    $name = $dts[2];
     
     require_once("../../../Database/dbconnect_connect.php");
     
@@ -122,7 +122,7 @@ Please fill the below form to provide us the honest response of your opinion reg
     <textarea class="w3-input w3-border" name="msg" id="msg"></textarea>
 </div>
 <div class="w3-section w3-margin" style="text-align:left">
-    <button type="button" onclick="sendfeedback()" class="w3-button w3-<?php echo $theme_color ?> kel-hover-2">Enter</button>
+    <button type="button" onclick="sendfeedback()" class="w3-button w3-<?php echo $theme_color ?> kel-hover-2">Send</button>
 </div>
 
 </form>
