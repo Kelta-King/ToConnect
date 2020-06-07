@@ -22,6 +22,15 @@ if(isset($_SESSION['login_user_connect']) && isset($_REQUEST['name'])){
         
     }
     
+    $qry = "SELECT real_name FROM users WHERE u_id = $id";
+    
+    if($data = $conn->query($qry)){
+        
+        $result = $data->fetch_assoc();
+        $name = $result['real_name'];
+        
+    }
+    
     $q = "SELECT verified FROM users WHERE u_id = $id";
     
     if($d = $conn->query($q)){
@@ -29,8 +38,7 @@ if(isset($_SESSION['login_user_connect']) && isset($_REQUEST['name'])){
         $rslt = $d->fetch_assoc();
         
         if($rslt['verified'] == '1'){
-            
-            define("TITLE", "mySessions | ToConnect");
+            define("TITLE", "start session | ToConnect");
             include("../Commen/header.php");
 ?>
 <!-- Verified account area -->
@@ -101,63 +109,79 @@ if(isset($_SESSION['login_user_connect']) && isset($_REQUEST['name'])){
     </div>
 </div>
 
-
-<center>
-<div class="w3-content w3-padding-32 w3-animate-bottom">
-    <div class="w3-white w3-padding-32">
-        <div class="w3-xxlarge">My Sessions</div>
-        <hr style="border-bottom:2px solid black" class="w3-margin">
-<?php
-    $query = "SELECT s_id, s_date, doctor FROM sessions WHERE u_id = $id";
-    
-    if($data = $conn->query($query)){
-?>
+<div class="w3-padding-64 w3-animate-bottom">
+<div class="w3-content w3-light-gray w3-padding-32 w3-text-<?php echo $theme_color ?>">
+    <div class="w3-xxlarge w3-center w3-padding">Start New Session</div>
+    <hr style="border-top:1px solid black;margin:10px">
+    <div class="w3-container w3-padding">
+        <div class="w3-xlarge w3-padding">
+            Welcome <?php echo $name ?>!!!
+        </div>
+        <div class="w3-text-black w3-padding w3-large">
+            Read the below instructions carefully and select the counselor to start these session. We have two counselors.<br> 1) Dr Karen <br>2) Dr Batla
+        </div>
+        <hr style="border-top:1px solid black;margin:10px">
+        <div class="w3-padding w3-xlarge w3-center w3-text-black">
+            Instructions
+        </div>
+        <div class="w3-large">
+            If you want us to recite the instructions then select those lines with the help of cursor.
+        </div>
+        <ul class="w3-list w3-text-black" id="instructions">
+            <li>This is a vertual counselling session. At the end of this session you will find out the best way to solve your problems as well as a contact details of 
+            a doctor who will guide you in future.</li>
+            <li>If you turn off your computer before submitting the data then you ae not able to attend that session again.</li>
+            <li>You session's result is totally dependent on your answers. So be a honest answerer. Do not lie.</li>
+            <li>In case you gave incorrect answers then the result will be incorrect. We are not responsible any of those kind of things.</li>
+            <li>In case you are thinking that what happens to my answers, then your answeres are secured with us. No one is going to be able to watch it as english language.</li>
+            <li>This software is to turn your feelings positive. On the basis of your answers we will provide you the way to feel better</li>
+            <li>This is a totally free service.</li>
+        </ul>
         
-    <table class="w3-table-all">
-    <thead>
-        <tr class="w3-<?php echo $theme_color ?>">
-            <td>Date</td>
-            <td>Conducted by</td>
-        </tr>
-    </thead>
-    <tbody>
-<?php
-
-    while($result = $data->fetch_assoc()){
-        
-        $date = $result['s_date'];
-        $doc = $result['doctor'];
-?>
-<tr>
-    <td><?php echo $date ?></td>
-    <td><?php echo $doc ?></td>
-</tr>
-<?php
-        
-    }
-
-?>
-    </tbody>
-    
-    </table>
-        
-<?php
-    }
-    else{
-        echo "something went wrong";
-    }
-?>
+        <form class="w3-margin w3-padding w3-text-black" id="data">
+            <input type="checkbox" id="read" required> I have read and understand all the above instructions
+            <input value="Karen" id="dr" name="dr" hidden>
+            <input value="<?php echo $_REQUEST['name'] ?>" name="number" hidden>
+            <div class="w3-section">
+                <b>Select Doctor: </b>
+                <table class="w3-xxlarge">
+                    <tr>
+                        <td class="w3-center kel-hover-2"><img src="https://www.w3schools.com/w3images/avatar2.png" id="Batla" class="w3-circle w3-margin" style="width:200px;" onclick="select('Batla')"></td>
+                        <td class="w3-center kel-hover-2"><img src="https://www.w3schools.com/howto/img_avatar2.png" id="Karen" class="w3-circle w3-margin" style="width:200px;border:5px solid blue" onclick="select('Karen')"></td>
+                    </tr>
+                    <tr>
+                        <td class="w3-center">Dr. Batla</td>
+                        <td class="w3-center">Dr. Karen</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="w3-section">
+                <input type="button" value="Start Session" onclick="start()" class="w3-button kel-hover w3-<?php echo $theme_color ?>">
+            </div>
+        </form>
     </div>
+    <form class="w3-padding">
+        <div class="w3-section">
+            
+        </div>
+        <div class="w3-section">
+            
+        </div>
+        <div class="w3-section">
+            
+        </div>
+    </form>
 </div>
-</center>
-<script src="Js/varified.js"></script>
-</body>
-</html>
+</div>
 <?php
         }
         else{
-            //non varified account
-            header("Location:../logout"); 
+           
+?>
+<!-- Notverified account area -->
+
+<?php
+            header("Location:../logout.php");
         }
         
     }
@@ -167,6 +191,59 @@ if(isset($_SESSION['login_user_connect']) && isset($_REQUEST['name'])){
     
     
 ?>
+<script src="/ToConnect/Js/check.js"></script>
+<script src="Js/varified.js"></script>
+<script src="https://code.responsivevoice.org/responsivevoice.js?key=enR4dReg"></script>
+<script>
+    let select = (name) => {
+        
+        let karen = document.getElementById("Karen");
+        let batla = document.getElementById("Batla");
+        
+        if(name == "Karen"){
+            
+            karen.style.border = "thick solid #0000FF";
+            batla.style.border = "thick solid #f1f1f1";
+            document.getElementById("dr").value = "Karen";
+            let speak = "Hi, My name is Dr Karen";
+            responsiveVoice.speak(speak,"Australian Female");
+            
+        }
+        else if(name == "Batla"){
+            
+            batla.style.border = "thick solid #0000FF";
+            karen.style.border = "thick solid #f1f1f1";
+            document.getElementById("dr").value = "Batla";
+            let speak = "Hello, My name is Dr Batla";
+            responsiveVoice.speak(speak,"Hindi Male");
+            
+        }
+        
+    }
+    
+    let start = () => {
+        
+        let dr = document.getElementById("dr").value;
+        
+        if(!document.getElementById("read").checked){
+            alert("Please select checkbox")
+            document.getElementById("read").focus();
+            return false;
+        }
+        
+        if(!confirm("Are you sure, you want to choose Dr. "+dr)){
+            return false;
+        }
+        
+        document.getElementById('data').method = "post";
+        document.getElementById('data').action = "sessionSet";
+        document.getElementById('data').submit();
+        
+    }
+    
+</script>
+</body>
+</html>
 <?php
     
     $conn->close();
