@@ -1,67 +1,192 @@
-let updatetheme = (color) => {
-    
-    let str = "Color="+color;
-    let xhttp = new XMLHttpRequest();
-    let loader = document.getElementById('color-loader');
-    let error = document.getElementById('color-error');
-    
-    xhttp.onreadystatechange = function() {
-    	loader.style.display = "block";
-    	if(this.readyState == 4 && this.status == 200){
-    		error.innerHTML = this.responseText;
-    		loader.style.display = "none";
-    		if(this.responseText == ""){
-    		    alert("Theme updated");
-    		    location.reload(); 
-     		}
-    	}
-    }
-    xhttp.open("POST", "Parts/updatetheme", true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send(str);
-}
-
-let updateProfile = () => {
-    
-    let u_name = document.getElementById('u_name').value;
-	let pass = document.getElementById('pass').value;
-	let newPass = document.getElementById('newPas').value;
-	let newAga = document.getElementById('newAga').value;
-	let check_data = new Check();
-	let error = document.getElementById('up-error');
-	        
-	if(u_name == "" || pass == "" || newPass == "" || newAga == ""){
-	    alert("Please enter all data");
-	    error.innerHTML = "Please enter all data";
-	    return false;
+	function OpenLogIn()
+	{
+		document.getElementById("layer2").style.display = "none";
+		document.getElementById("layer1").style.display = "block";
+		
 	}
+	
+	function OpenSignIn()
+	{
+		document.getElementById("layer2").style.display = "block";
+		document.getElementById("layer1").style.display = "none";
+	}
+	
+	
+	let loginCheck = () => {
 	    
-	if(check_data.check(u_name) || check_data.check(pass) || check_data.check(newPass) || check_data.check(newAga)){
-	    return false;
-	}
-	  
-	if(newPass != newAga){
-	    alert("Confirm password didn't match");
-	    error.innerHTML = "Confirm password didn't match";
-	    return false;
-	} 
-	 
-	let str = "u_name="+u_name+"&cur_pass="+pass+"&newPass="+newPass+"&newAga="+newAga;
-    let xhttp = new XMLHttpRequest();
-    let loader = document.getElementById('up-loader');
-    xhttp.onreadystatechange = function() {
-        loader.style.display = "block";
-        if(this.readyState == 4 && this.status == 200){
-        	error.innerHTML = this.responseText;
-        	loader.style.display = "none";
-        	if(this.responseText == ""){
-        	    alert("Password successfully updated");
-        	    location.reload(); 
+	    let formL = document.getElementById('login');
+		document.getElementById('eu').name = "Eu";
+		document.getElementById('password').name = "Password";
+		
+		let eu = formL.Eu.value;
+		let pass = formL.Password.value;
+		let error = document.getElementById('loginerror');
+		
+		let check_data = new Check();
+		if(check_data.check(eu) || check_data.check(pass)){
+		    
+		    alert("Please add correct details");
+		    error.innerHTML = "Please add correct details";
+		    return;
+		    
+		}
+		
+		//email login
+		if(eu.includes("@")){
+		    if(check_data.emailCheck(eu, error)){
+		        
+		        let str = "Pass="+pass+"&Email="+eu;
+            	let xhttp = new XMLHttpRequest();
+            	let loader = document.getElementById('loginloader');
+            	xhttp.onreadystatechange = function() {
+            		loader.style.display = "block";
+            		if(this.readyState == 4 && this.status == 200){
+            			error.innerHTML = this.responseText;
+            			loader.style.display = "none";
+            			if(this.responseText == ""){
+            			    
+            			    formL.action = "login";
+            				formL.method = "post";
+            				formL.submit();
+            				
+            			}
+            		}
+        		}
+        		xhttp.open("POST", "Check/loginEmailCheck", true);
+        		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        		xhttp.send(str);
+		        
+		    }
+		    else{
+		        return false;
+		    }
+		    
+		}
+		//username login
+		else{
+		    
+		    let str = "Pass="+pass+"&Uname="+eu;
+            let xhttp = new XMLHttpRequest();
+            let loader = document.getElementById('loginloader');
+            xhttp.onreadystatechange = function() {
+            	loader.style.display = "block";
+            	if(this.readyState == 4 && this.status == 200){
+            	error.innerHTML = this.responseText;
+            	loader.style.display = "none";
+            		if(this.responseText == ""){
+            		    
+            		    formL.action = "login";
+            			formL.method = "post";
+            			formL.submit();
+            			
+            		}
+            	}
         	}
-        }
-    }
-    xhttp.open("POST", "updateProfile", true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send(str);
-    
-}
+        	xhttp.open("POST", "Check/loginUnameCheck", true);
+        	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        	xhttp.send(str);
+		    
+		}
+	    
+	}
+	
+	let SignUpCheck = () => {
+		
+		let formS = document.getElementById('signup');
+		document.getElementById('name').name = "Name";
+		document.getElementById('email').name = "Email";
+		document.getElementById('password1').name = "Pass1";
+		document.getElementById('password2').name = "Pass2";
+		document.getElementById('gender').name = "Gender";
+		let check_data = new Check();
+		let error = document.getElementById('SignUpError');
+		let name = formS.Name.value;
+		let email = formS.Email.value;
+		let pass = formS.Pass1.value;
+		let passCon = formS.Pass2.value;
+		let gender = formS.Gender.value;
+	
+		if(name == "" || email == "" || pass == "" || passCon == "" || gender == ""){
+			alert("Please enter every details");
+			error.innerHTML = "Please enter every details";
+			return false;
+		}
+		
+		if(name.length <= 4) {
+			alert("Please enter your full name");
+			error.innerHTML = "Please enter your full name";
+			return false;
+		}
+		
+		try{
+			if(!check_data.emailCheck(email, error)){
+				
+				return false;
+				
+			}
+		
+			if(check_data.check(email)){
+				alert("Please enter valid email");
+				error.innerHTML = "Please enter valid email";
+				return false;
+			}
+			
+			if(check_data.check(name)){
+				alert("Please enter valid name");
+				error.innerHTML = "Please enter valid email";
+				return false;
+			}
+			
+			if(check_data.check(pass)){
+				alert("Please enter valid password");
+				error.innerHTML = "Please enter valid email";
+				return false;
+			}
+			
+			if(check_data.check(passCon)){
+				alert("Please enter valid password");
+				error.innerHTML = "Please enter valid email";
+				return false;
+			}
+		}
+		catch(err){
+			alert("There is a problem: "+err);
+			return;
+		}
+		
+		if(pass.length <= 5){
+			alert("password must be more than 5 letters");
+			error.innerHTML = "password must be more than 5 letters";
+			return false;
+		}
+		
+		if(pass !== passCon){
+			alert("Both passwords do not match");
+			error.innerHTML = "Both passwords do not match";
+			return false;
+		}
+	
+		let str = "Name="+name+"&Email="+email+"&Pass="+pass+"&Gender="+gender;
+    	let xhttp = new XMLHttpRequest();
+    	let loader = document.getElementById('loaderSignUp');
+    		xhttp.onreadystatechange = function() {
+    			loader.style.display = "block";
+    			if(this.readyState == 4 && this.status == 200){
+    				error.innerHTML = this.responseText;
+    				loader.style.display = "none";
+    				if(this.responseText == ""){
+    				    
+    				    formS.action = "logins";
+    					formS.method = "post";
+    					formS.submit();
+    					
+    				}
+    			}
+		    }
+		xhttp.open("POST", "Check/userCheck", true);
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send(str);
+	
+	}
+	
+	
