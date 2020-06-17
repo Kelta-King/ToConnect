@@ -454,7 +454,6 @@ ALTER TABLE `indi_marks_que_sets`
 --
 -- Indexes for table `questions`
 --
-
 ALTER TABLE `questions`
   ADD PRIMARY KEY (`q_id`),
   ADD KEY `chp_id` (`chp_id`),
@@ -607,3 +606,61 @@ ALTER TABLE `chapters`
 --
 -- Constraints for table `indi_marks_que_sets`
 --
+ALTER TABLE `indi_marks_que_sets`
+  ADD CONSTRAINT `c_indi` FOREIGN KEY (`c_id`) REFERENCES `classes` (`c_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `qset_indi` FOREIGN KEY (`q_set_id`) REFERENCES `question_sets` (`q_set_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `s_indi` FOREIGN KEY (`s_id`) REFERENCES `students` (`s_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `sub_indi` FOREIGN KEY (`sub_id`) REFERENCES `subjects` (`sub_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `questions`
+--
+ALTER TABLE `questions`
+  ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`chp_id`) REFERENCES `chapters` (`chp_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `questions_ibfk_2` FOREIGN KEY (`q_set_id`) REFERENCES `question_sets` (`q_set_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `question_sets`
+--
+ALTER TABLE `question_sets`
+  ADD CONSTRAINT `c_fk` FOREIGN KEY (`c_id`) REFERENCES `classes` (`c_id`),
+  ADD CONSTRAINT `sub_fk` FOREIGN KEY (`sub_id`) REFERENCES `subjects` (`sub_id`);
+
+--
+-- Constraints for table `que_photo`
+--
+ALTER TABLE `que_photo`
+  ADD CONSTRAINT `q_photo_fk` FOREIGN KEY (`q_id`) REFERENCES `questions` (`q_id`);
+
+--
+-- Constraints for table `que_stu_answer`
+--
+ALTER TABLE `que_stu_answer`
+  ADD CONSTRAINT `q_fk` FOREIGN KEY (`q_id`) REFERENCES `questions` (`q_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `stu_fk` FOREIGN KEY (`s_id`) REFERENCES `students` (`s_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `students`
+--
+ALTER TABLE `students`
+  ADD CONSTRAINT `stu_class` FOREIGN KEY (`c_id`) REFERENCES `classes` (`c_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `stu_sub`
+--
+ALTER TABLE `stu_sub`
+  ADD CONSTRAINT `stu` FOREIGN KEY (`s_id`) REFERENCES `students` (`s_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `sub` FOREIGN KEY (`sub_id`) REFERENCES `subjects` (`sub_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `tea_sub_cla`
+--
+ALTER TABLE `tea_sub_cla`
+  ADD CONSTRAINT `clas` FOREIGN KEY (`c_id`) REFERENCES `classes` (`c_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `subj` FOREIGN KEY (`sub_id`) REFERENCES `subjects` (`sub_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `tea` FOREIGN KEY (`t_id`) REFERENCES `teachers` (`t_id`) ON DELETE CASCADE;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
