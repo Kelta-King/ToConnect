@@ -455,3 +455,155 @@ ALTER TABLE `indi_marks_que_sets`
 -- Indexes for table `questions`
 --
 
+ALTER TABLE `questions`
+  ADD PRIMARY KEY (`q_id`),
+  ADD KEY `chp_id` (`chp_id`),
+  ADD KEY `q_set_id` (`q_set_id`);
+
+--
+-- Indexes for table `question_sets`
+--
+ALTER TABLE `question_sets`
+  ADD PRIMARY KEY (`q_set_id`),
+  ADD UNIQUE KEY `q_set_name` (`q_set_name`),
+  ADD KEY `c_fk` (`c_id`),
+  ADD KEY `sub_fk` (`sub_id`);
+
+--
+-- Indexes for table `que_photo`
+--
+ALTER TABLE `que_photo`
+  ADD KEY `q_photo_fk` (`q_id`);
+
+--
+-- Indexes for table `que_stu_answer`
+--
+ALTER TABLE `que_stu_answer`
+  ADD UNIQUE KEY `q_s_uq` (`q_id`,`s_id`),
+  ADD KEY `q_fk` (`q_id`),
+  ADD KEY `stu_fk` (`s_id`);
+
+--
+-- Indexes for table `quotes`
+--
+ALTER TABLE `quotes`
+  ADD PRIMARY KEY (`quote_id`);
+
+--
+-- Indexes for table `quotes_stu`
+--
+ALTER TABLE `quotes_stu`
+  ADD UNIQUE KEY `qs_uq` (`quote_id`,`s_id`),
+  ADD KEY `squot_fk` (`s_id`);
+
+--
+-- Indexes for table `students`
+--
+ALTER TABLE `students`
+  ADD PRIMARY KEY (`s_id`),
+  ADD UNIQUE KEY `s_rollNo` (`s_rollNo`),
+  ADD KEY `stu_class` (`c_id`);
+
+--
+-- Indexes for table `stu_sub`
+--
+ALTER TABLE `stu_sub`
+  ADD UNIQUE KEY `uq` (`s_id`,`sub_id`),
+  ADD KEY `sub` (`sub_id`);
+
+--
+-- Indexes for table `subjects`
+--
+ALTER TABLE `subjects`
+  ADD PRIMARY KEY (`sub_id`);
+
+--
+-- Indexes for table `teachers`
+--
+ALTER TABLE `teachers`
+  ADD PRIMARY KEY (`t_id`),
+  ADD UNIQUE KEY `t_rollNo` (`t_rollNo`);
+
+--
+-- Indexes for table `tea_sub_cla`
+--
+ALTER TABLE `tea_sub_cla`
+  ADD UNIQUE KEY `uq` (`t_id`,`sub_id`,`c_id`),
+  ADD KEY `subj` (`sub_id`),
+  ADD KEY `cla` (`c_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `chapters`
+--
+ALTER TABLE `chapters`
+  MODIFY `chp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT for table `classes`
+--
+ALTER TABLE `classes`
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `questions`
+--
+ALTER TABLE `questions`
+  MODIFY `q_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+
+--
+-- AUTO_INCREMENT for table `question_sets`
+--
+ALTER TABLE `question_sets`
+  MODIFY `q_set_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+
+--
+-- AUTO_INCREMENT for table `quotes`
+--
+ALTER TABLE `quotes`
+  MODIFY `quote_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `students`
+--
+ALTER TABLE `students`
+  MODIFY `s_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
+-- AUTO_INCREMENT for table `subjects`
+--
+ALTER TABLE `subjects`
+  MODIFY `sub_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `teachers`
+--
+ALTER TABLE `teachers`
+  MODIFY `t_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `avg_calc_individual`
+--
+ALTER TABLE `avg_calc_individual`
+  ADD CONSTRAINT `c_avg` FOREIGN KEY (`c_id`) REFERENCES `classes` (`c_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `chp_avg` FOREIGN KEY (`chp_id`) REFERENCES `chapters` (`chp_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `s_avg` FOREIGN KEY (`s_id`) REFERENCES `students` (`s_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `sub_avg` FOREIGN KEY (`sub_id`) REFERENCES `subjects` (`sub_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `chapters`
+--
+ALTER TABLE `chapters`
+  ADD CONSTRAINT `cla` FOREIGN KEY (`c_id`) REFERENCES `classes` (`c_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `subfk` FOREIGN KEY (`sub_id`) REFERENCES `subjects` (`sub_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `indi_marks_que_sets`
+--
