@@ -266,3 +266,192 @@ CREATE TABLE `quotes` (
 --
 -- Dumping data for table `quotes`
 --
+
+INSERT INTO `quotes` (`quote_id`, `quote_text`) VALUES
+(1, 'Be Positive'),
+(2, 'Do it better'),
+(3, 'The world is waiting for you');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `quotes_stu`
+--
+
+CREATE TABLE `quotes_stu` (
+  `quote_id` int(11) DEFAULT NULL,
+  `s_id` int(11) DEFAULT NULL,
+  `hit` enum('0','1') DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `quotes_stu`
+--
+
+INSERT INTO `quotes_stu` (`quote_id`, `s_id`, `hit`) VALUES
+(2, 27, '1'),
+(2, 28, '1'),
+(3, 27, '1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `students`
+--
+
+CREATE TABLE `students` (
+  `s_id` int(11) NOT NULL,
+  `s_rollNo` int(11) DEFAULT NULL,
+  `s_name` varchar(255) DEFAULT NULL,
+  `s_password` varchar(255) DEFAULT NULL,
+  `gender` enum('Male','Female') NOT NULL,
+  `c_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`s_id`, `s_rollNo`, `s_name`, `s_password`, `gender`, `c_id`) VALUES
+(27, 2001, 'Trial Student', '$2y$12$jV84Fse12dChZ3LcC3Oy5.hJl7icKWc8VASF.6Qb6EEGNbz//gHaK', 'Male', 10),
+(28, 2002, 'Trial student 2', '$2y$12$F1bz5sl4/KigNS1RjJOzNOOBgPW1XIhUMxId1Eh8JnADlGNOTFk86', 'Male', 10);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `stu_sub`
+--
+
+CREATE TABLE `stu_sub` (
+  `s_id` int(11) DEFAULT NULL,
+  `sub_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `stu_sub`
+--
+
+INSERT INTO `stu_sub` (`s_id`, `sub_id`) VALUES
+(27, 5),
+(28, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subjects`
+--
+
+CREATE TABLE `subjects` (
+  `sub_id` int(11) NOT NULL,
+  `sub_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `subjects`
+--
+
+INSERT INTO `subjects` (`sub_id`, `sub_name`) VALUES
+(5, 'Maths'),
+(7, 'English'),
+(8, 'Sanskrit'),
+(9, 'Science');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `teachers`
+--
+
+CREATE TABLE `teachers` (
+  `t_id` int(11) NOT NULL,
+  `t_name` varchar(255) DEFAULT NULL,
+  `t_password` varchar(255) DEFAULT NULL,
+  `t_rollNo` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `teachers`
+--
+
+INSERT INTO `teachers` (`t_id`, `t_name`, `t_password`, `t_rollNo`) VALUES
+(16, 'Trial Teacher', '$2y$12$/9de3fBv1Va1DSdUBbRV8uQkQp1tvfjSG/zF.Z3Rb20dHHv542pcq', 1111);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tea_sub_cla`
+--
+
+CREATE TABLE `tea_sub_cla` (
+  `t_id` int(11) DEFAULT NULL,
+  `sub_id` int(11) DEFAULT NULL,
+  `c_id` int(11) DEFAULT NULL,
+  `t_name` varchar(255) NOT NULL,
+  `sub_name` varchar(255) NOT NULL,
+  `c_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tea_sub_cla`
+--
+
+INSERT INTO `tea_sub_cla` (`t_id`, `sub_id`, `c_id`, `t_name`, `sub_name`, `c_name`) VALUES
+(16, 5, 10, 'Trial Teacher', 'Maths', 'Trial Class');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admins`
+--
+ALTER TABLE `admins`
+  ADD UNIQUE KEY `admin_id` (`admin_id`);
+
+--
+-- Indexes for table `avg_calc_individual`
+--
+ALTER TABLE `avg_calc_individual`
+  ADD UNIQUE KEY `uq_indi` (`s_id`,`c_id`,`sub_id`,`chp_id`),
+  ADD KEY `c_avg` (`c_id`),
+  ADD KEY `sub_avg` (`sub_id`),
+  ADD KEY `chp_avg` (`chp_id`);
+
+--
+-- Indexes for table `chapters`
+--
+ALTER TABLE `chapters`
+  ADD PRIMARY KEY (`chp_id`),
+  ADD UNIQUE KEY `uq` (`ch_no`,`c_id`,`sub_id`),
+  ADD KEY `subfk` (`sub_id`),
+  ADD KEY `cla` (`c_id`);
+
+--
+-- Indexes for table `classes`
+--
+ALTER TABLE `classes`
+  ADD PRIMARY KEY (`c_id`),
+  ADD UNIQUE KEY `c_name` (`c_name`);
+
+--
+-- Indexes for table `error_data`
+--
+ALTER TABLE `error_data`
+  ADD KEY `se_fk` (`s_id`),
+  ADD KEY `ce_fk` (`c_id`),
+  ADD KEY `sube_fk` (`sub_id`),
+  ADD KEY `qse_fk` (`q_set_id`);
+
+--
+-- Indexes for table `indi_marks_que_sets`
+--
+ALTER TABLE `indi_marks_que_sets`
+  ADD UNIQUE KEY `uq_indi` (`s_id`,`q_set_id`,`c_id`,`sub_id`),
+  ADD KEY `qset_indi` (`q_set_id`),
+  ADD KEY `c_indi` (`c_id`),
+  ADD KEY `sub_indi` (`sub_id`);
+
+--
+-- Indexes for table `questions`
+--
+
