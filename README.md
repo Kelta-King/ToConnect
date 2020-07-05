@@ -15,6 +15,12 @@ Others, Can follow a simpler route by using the URL given: 👉
 
 ***SIGN UP AND ENJOY THE EXPERIENCE FOR FREE!***
 
+<p align="center">
+<a href="https://keltagoodlife.co/ToConnect/">
+  <img src='https://github.com/Kelta-King/ToConnect/blob/master/blob/LogInPage.JPG' width="700" title="LogInPage">
+  </a>
+</p>
+
 ## Working of the Application : 
 
 To Register for the first time, the user has to provide their **Name**, ***email***, **password** and retype to **confirm password** and **gender**. :lock:
@@ -26,12 +32,6 @@ It will be rendered using *server-side scripts*.
 
 After completing all these steps, the user will be *directed to the Lobby*. :ok_hand:
 
-
-<p align="center">
-<a href="https://keltagoodlife.co/ToConnect/">
-  <img src='https://github.com/Kelta-King/ToConnect/blob/master/blob/LogInPage.JPG' width="700" title="LogInPage">
-  </a>
-</p>
 
 <p align="center">
 <a href="https://keltagoodlife.co/ToConnect/">
