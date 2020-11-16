@@ -16,9 +16,7 @@ Others, Can follow a simpler route by using the URL given: 👉
 ***SIGN UP AND ENJOY THE EXPERIENCE FOR FREE!***
 
 <p align="center">
-<a href="https://keltagoodlife.co/ToConnect/">
   <img src='https://github.com/Kelta-King/ToConnect/blob/master/blob/LogInPage.JPG' width="700" title="LogInPage">
-  </a>
 </p>
 
 ## Working of the Application : 
@@ -34,9 +32,7 @@ After completing all these steps, the user will be *directed to the Lobby*. :ok_
 
 
 <p align="center">
-<a href="https://keltagoodlife.co/ToConnect/">
   <img src='https://github.com/Kelta-King/ToConnect/blob/master/blob/ToconnectHome.gif' width="700" title="Home Page">
-  </a>
 </p>
 
 <p align="center">
@@ -72,9 +68,7 @@ After completing all these steps, the user will be *directed to the Lobby*. :ok_
   <b>Below is the screenshot of the home page of ToConnect</b>
 </p>
 <p align="Center">
-<a href="https://keltagoodlife.co/ToConnect/">
   <img src='https://github.com/Kelta-King/ToConnect/blob/master/blob/Home.JPG' width="700">  
-</a>
 </p>
 </p>
 <p>
@@ -82,24 +76,19 @@ Ther are 4 things a user can do. Start a new session, see all his sessions recor
 </p>
 <p align='center'><b>If user clicks on New Session then a web page shows just like below</b></p>
 <p align="center">
-<a href="https://keltagoodlife.co/ToConnect/">
   <img src='https://github.com/Kelta-King/ToConnect/blob/master/blob/startNew.JPG' width="700">
-</a>
 </p>
 <p align='center'>Before starting the session a user has to select the virtual consellor. There are two options. You can select one by clicking on. They will speak out their name. One is Dr Batla and the other one is Dr Karen</p>
 <p align="center"><b>Options of the consellors</b></p>
 <p align='center'>
-<a href="https://keltagoodlife.co/ToConnect/">
 <img src='https://github.com/Kelta-King/ToConnect/blob/master/blob/options.JPG' height="350">
-</a>
 </p>
 <p>Allow your webpage's audio to talk with the virtual concellor via chat. Concellor will send messages as well as speak with you. You can turn off the audio if you don't like to listen the same thing which you are reading.</p>
 <p>If you want to change the webpage's settings then click on the settings button or click on the button on the right top with your username written on it. A new popup settings modal comes in. You can change your password username and website's theme over there.</p>
 <p align="center"><b>Below is the settings panel of the site</b></p>
 <p align='center'>
-<a href="https://keltagoodlife.co/ToConnect/">
   <img src='https://github.com/Kelta-King/ToConnect/blob/master/blob/settings.gif'>
-</p></a>
+</p>
 <p>
 I hope that you like my project. Thanks for reading.
 </p>
